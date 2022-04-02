@@ -12,7 +12,7 @@ Go to the main site and follow the getting started guide and run
  dapr init
 ```
 
-And wellcome to the hyperspace :)
+And welcome to the hyperspace :)
 
 Run docker ps, and you must see the default components defined on ~/.dapr:
 

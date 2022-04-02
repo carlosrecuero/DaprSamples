@@ -1,0 +1,65 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"appId": "app1",
+			"appPort": 5044,
+			"label": "daprd-debug-1",
+			"type": "daprd",
+			"dependsOn": "build"
+		},
+		{
+			"appId": "app1",
+			"label": "daprd-down-1",
+			"type": "daprd-down"
+		},
+		{
+			"appId": "app2",
+			"appPort": 5045,
+			"label": "daprd-debug-2",
+			"type": "daprd",
+			"dependsOn": "build"
+		},
+		{
+			"appId": "app2",
+			"label": "daprd-down-2",
+			"type": "daprd-down"
+        },
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/DaprApiService1/ApiService1.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/DaprApiService1/ApiService1.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/src/DaprApiService1/ApiService1.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+	]
+}

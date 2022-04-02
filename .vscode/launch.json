@@ -1,0 +1,108 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "name": "Launch (DaprApiService1)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/src/DaprApiService1/bin/Debug/net6.0/ApiService1.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/DaprApiService1",
+      "stopAtEntry": false,
+      // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+      "serverReadyAction": {
+          "action": "openExternally",
+          "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+          "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "Launch (DaprApiService2)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/src/DaprApiService2/bin/Debug/net6.0/ApiService2.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/DaprApiService2",
+      "stopAtEntry": false,
+      // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+      "serverReadyAction": {
+          "action": "openExternally",
+          "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+          "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "Launch (DaprApiService1) with Dapr",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "daprd-debug-1",
+      "program": "${workspaceFolder}/src/DaprApiService1/bin/Debug/net6.0/ApiService1.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/DaprApiService1",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      },
+      "postDebugTask": "daprd-down-1"
+    },
+    {
+      "name": "Launch (DaprApiService2) with Dapr",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "daprd-debug-2",
+      "program": "${workspaceFolder}/src/DaprApiService2/bin/Debug/net6.0/ApiService2.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/DaprApiService2",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      },
+      "postDebugTask": "daprd-down-2"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "App1 & App2",
+      "configurations": [
+        "Launch (DaprApiService1)",
+        "Launch (DaprApiService2)"
+      ]
+    },
+    {
+      "name": "App1 & App2 with Dapper",
+      "configurations": [
+        "Launch (DaprApiService1) with Dapr",
+        "Launch (DaprApiService2) with Dapr"
+      ]
+    }
+  ]
+}
